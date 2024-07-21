@@ -27,6 +27,7 @@ def get_output(messages):
 
 
 @bot.message_handler(commands=["start", "clear"])
+def clear_message(message):
     messages[message.chat.id] = []
     bot.send_message(message.chat.id, "Ready to start")
 
