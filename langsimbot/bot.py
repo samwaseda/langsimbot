@@ -1,6 +1,6 @@
 # This example show how to use inline keyboards and process button presses
 import telebot
-from langsim.llm import get_executor
+from llm import get_executor
 from collections import defaultdict
 import os
 
