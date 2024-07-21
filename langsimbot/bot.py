@@ -26,6 +26,11 @@ def get_output(messages):
     return list(agent_executor.stream({"conversation": messages}))[-1]
 
 
+@bot.message_handler(commands=["start", "clear"])
+    messages[message.chat.id] = []
+    bot.send_message(message.chat.id, "Ready to start")
+
+
 @bot.message_handler(func=lambda message: True)
 def message_handler(message):
     messages[message.chat.id].append(("human", message.text))
