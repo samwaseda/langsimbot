@@ -3,6 +3,7 @@ import telebot
 from llm import get_executor
 from collections import defaultdict
 import os
+from hashlib import SHA256
 
 
 messages = defaultdict(list)
@@ -34,6 +35,8 @@ def clear_message(message):
 
 @bot.message_handler(func=lambda message: True)
 def message_handler(message):
+    if not check_id(message.chat.id):
+        return
     messages[message.chat.id].append(("human", message.text))
     print(message.text)
     response = get_output(messages[message.chat.id])
